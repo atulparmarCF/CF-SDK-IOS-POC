@@ -27,3 +27,39 @@ Note:- As a part of manual integration you have to add following dependencies in
 * Alamofire: https://github.com/Alamofire/Alamofire.git
 * ReactiveSwift: https://github.com/ReactiveCocoa/ReactiveSwift.git
 * SwiftyJSON: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+
+# How to configure the CF SDK?
+
+
+### See the full example of configuration CF SDK and integrate delegate methods of that.
+
+```groovy
+class ViewController: UIViewController, CFSDKConfigDelegate {
+
+    //MARK: CF SDK Configuration.
+
+    func setupCFSDKConfiguration() {
+
+        var objCFSDK = CFSDKConfig()
+        objCFSDK.delegate = self   //Optional
+        objCFSDK.skdConfiguration(
+            authCode: "Auth Code String",
+            sdkSessionId: "SDK Session ID String",
+            environment: .envProd   //Optional (Default environment is production)
+        )
+    }
+    
+    //MARK: Delegate functions of CF SDK.
+    
+    func successfullyConfiguredCFSDK() {
+        //The CF API has been configured successfully.
+        print("The CF API has been configured successfully.")
+    }
+    
+    func failedToConfigCFSDK(error: Error) {
+        //The CF API configuration has failed.
+        print("CF API configured Failed.....:: \(error.localizedDescription)")
+    }
+}
+```
