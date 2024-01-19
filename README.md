@@ -35,6 +35,8 @@ Note:- As a part of manual integration you have to add following dependencies in
 ### See the full example of configuration CF SDK and integrate delegate methods of that.
 
 ```groovy
+import CFSDK
+
 class ViewController: UIViewController, CFSDKConfigDelegate {
 
     //MARK: CF SDK Configuration.
