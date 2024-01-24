@@ -21,7 +21,10 @@ From [Sources](../../../SDKs/Sources) copy:
 
 Add all copied artifacts to your Xcode project under "Frameworks, Libraries, and Embedded Content". 
 
-Make sure `Embed & Sign` is chosen as Embed option.
+Make sure `Embed & Sign` is chosen as Embed option (See the below screenshot).
+
+![Screenshot 2024-01-22 at 9 40 23 AM](https://github.com/atulparmarCF/CF-SDK-IOS-POC/assets/153191045/075723a1-f021-46d5-a899-9c7251d03471)
+
 
 Note:- As a part of manual integration you have to add following dependencies in your project.
 * Alamofire: https://github.com/Alamofire/Alamofire.git
