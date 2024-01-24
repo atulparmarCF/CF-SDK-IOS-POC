@@ -46,7 +46,7 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
         var objCFSDK = CFSDKConfig()
         objCFSDK.delegate = self   //Optional
         objCFSDK.skdConfiguration(
-            cardholderId: "Auth Code String",
+            cardholderId: "Card holder ID String",
             environment: .envProd   //Optional (Default environment is production)
         )
     }
