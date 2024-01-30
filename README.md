@@ -2,6 +2,9 @@
 
 ![Platform](https://img.shields.io/cocoapods/p/MiSnap.svg?color=darkgray)
 ![SPM](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen)
+# Table of Contents
+[Integration Guides](#integration-guides)
+[CF SDK configuration](#How-to-configure-the-CF-SDK?)
 
 # Integration Guides
 
