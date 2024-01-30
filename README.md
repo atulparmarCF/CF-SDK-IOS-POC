@@ -75,6 +75,7 @@ Implement required callbacks to conform to `CFSDKConfigDelegate`
     }
 
     // CF SDK Authorization methods are part of CF SDK configurations.
+    //(This methods are optional, just let the user know authorization status while configuring SDK)
 
     func cfSdkHandleAuthorizationSuccess() {
         //Handle authorization success
@@ -113,15 +114,6 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
     
     func cfSdkHandleConfigurationFailure(error: Error) {
         //Handle CF SDK configuration failure.
-        print("Error: ", error.localizedDescription)
-    }
-    
-    func cfSdkHandleAuthorizationSuccess() {
-        //Handle authorization success
-    }
-    
-    func cfSdkHandleAuthorizationFailure(error: Error) {
-        //Handle authorization failure
         print("Error: ", error.localizedDescription)
     }
 }
