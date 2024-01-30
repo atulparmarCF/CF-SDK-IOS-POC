@@ -4,8 +4,11 @@
 ![SPM](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen)
 # Table of Contents
 [Integration Guides](#integration-guides)
-[CF SDK configuration](#How-to-configure-the-CF-SDK?)
 
+[CF SDK configuration](#how-to-configure-the-cf-sdk?)
+
+[SDK Functions](#sdk-functions)
+- - - -
 # Integration Guides
 
 ### Swift Package Manager
