@@ -5,7 +5,7 @@
 # Table of Contents
 [Integration Guides](#integration-guides)
 
-[CF SDK configuration](#how-to-configure-the-cf-sdk?)
+[CF SDK configuration](#how-to-configure-the-cf-sdk)
 
 [SDK Functions](#sdk-functions)
 - - - -
