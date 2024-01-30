@@ -95,3 +95,44 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
     }
 }
 ```
+
+# APIs
+
+## 1. User Profile
+To retrieve user profile details, it is necessary to invoke the `getUserProfile()` function as demonstrated below.
+
+```Swift
+let signalProd = CFAPIManager.shared.getUserProfile()
+signalProd.startWithResult { result in
+  switch result {
+  case .success(let response):
+      // Handle API response
+      print("API response: \(response)")
+  case .failure(let error):
+     // Handle errors
+     print("Error: \(error.localizedDescription)")
+  }
+}
+```
+
+As part of the result (response) you will get `UserProfileData` model.
+
+In Swift, the question mark (?) is used in conjunction with data types to denote optional. Options represent the absence of a value in Swift whose default value is null (nil).
+### UserProfileData model.
+| Parameters | datatype |
+| :--- | :---: |
+| applicationID | String? |
+| phoneNumber | String? |
+| emailAddress | String? |
+| firstName | String? |
+| lastName | String? |
+| fullName | FullName? |
+| customerNumber | String? |
+
+#### Submodel of UserProfileData
+#### FullName model.
+
+| Parameters | datatype |
+| :--- | :---: |
+| firstName | String |
+| lastName | String |
