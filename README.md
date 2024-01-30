@@ -2,12 +2,18 @@
 
 ![Platform](https://img.shields.io/cocoapods/p/MiSnap.svg?color=darkgray)
 ![SPM](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen)
+
+# Change Financial SDK POC Integration Guide
+Change Financial SDK POC is a sample SDK in which it has predefined functions that provide the data from change financial's CMS.
+
 # Table of Contents
 [Integration Guides](#integration-guides)
 
 [CF SDK configuration](#how-to-configure-the-cf-sdk)
 
 [SDK Functions](#sdk-functions)
+* [1. User Profile](#user-profile)
+
 - - - -
 # Integration Guides
 
