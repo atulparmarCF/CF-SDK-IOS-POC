@@ -34,10 +34,38 @@ Note:- As a part of manual integration you have to add following dependencies in
 
 # How to configure the CF SDK?
 
+## CF SDK configuration steps.
+1. Add necessary imports in view controller.
+```Swift
+import CFSDK
+```
+
+2. Configure SDK using `cardholderId` and setup environment
+```Swift
+var objCFSDK = CFSDKConfig()
+objCFSDK.delegate = self   //Optional
+objCFSDK.skdConfiguration(
+             cardholderId: "Card holder ID String",
+             environment: .envProd   //Optional (Default environment is production)
+        )
+```
+
+3. Setup delegate methods (Optional),
+Implement required callbacks to conform to `CFSDKConfigDelegate`
+```Swift
+    func successfullyConfiguredCFSDK() {
+        //The CF API has been configured successfully.
+    }
+    
+    func failedToConfigCFSDK(error: Error) {
+        //The CF API configuration has failed.
+    }
+```
+
 
 ### See the full example of configuration CF SDK and integrate delegate methods of that.
 
-```groovy
+```Swift
 import CFSDK
 
 class ViewController: UIViewController, CFSDKConfigDelegate {
