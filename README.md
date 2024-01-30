@@ -96,7 +96,7 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
 }
 ```
 
-# APIs
+# SDK Functions
 
 ## 1. User Profile
 To retrieve user profile details, it is necessary to invoke the `getUserProfile()` function as demonstrated below.
