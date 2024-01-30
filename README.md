@@ -43,7 +43,7 @@ Note:- As a part of manual integration you have to add following dependencies in
 * ReactiveSwift: https://github.com/ReactiveCocoa/ReactiveSwift.git
 * SwiftyJSON: https://github.com/SwiftyJSON/SwiftyJSON.git
 
-
+- - - -
 # How to configure the CF SDK?
 
 ## CF SDK configuration steps.
@@ -107,7 +107,7 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
     }
 }
 ```
-
+- - - -
 # SDK Functions
 
 ## 1. User Profile
