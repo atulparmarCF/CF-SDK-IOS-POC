@@ -65,12 +65,24 @@ objCFSDK.skdConfiguration(
 3. Setup delegate methods (Optional),
 Implement required callbacks to conform to `CFSDKConfigDelegate`
 ```Swift
-    func successfullyConfiguredCFSDK() {
-        //The CF API has been configured successfully.
+    func cfSdkHandleConfigurationSuccess() {
+        //Handle CF SDK configuration success.
     }
     
-    func failedToConfigCFSDK(error: Error) {
-        //The CF API configuration has failed.
+    func cfSdkHandleConfigurationFailure(error: Error) {
+        //Handle CF SDK configuration failure.
+        print("Error: ", error.localizedDescription)
+    }
+
+    // CF SDK Authorization methods are part of CF SDK configurations.
+
+    func cfSdkHandleAuthorizationSuccess() {
+        //Handle authorization success
+    }
+    
+    func cfSdkHandleAuthorizationFailure(error: Error) {
+        //Handle authorization failure
+        print("Error: ", error.localizedDescription)
     }
 ```
 
@@ -95,15 +107,22 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
     }
     
     //MARK: Delegate functions of CF SDK.
-    
-    func successfullyConfiguredCFSDK() {
-        //The CF API has been configured successfully.
-        print("The CF API has been configured successfully.")
+    func cfSdkHandleConfigurationSuccess() {
+        //Handle CF SDK configuration success.
     }
     
-    func failedToConfigCFSDK(error: Error) {
-        //The CF API configuration has failed.
-        print("CF API configured Failed.....:: \(error.localizedDescription)")
+    func cfSdkHandleConfigurationFailure(error: Error) {
+        //Handle CF SDK configuration failure.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func cfSdkHandleAuthorizationSuccess() {
+        //Handle authorization success
+    }
+    
+    func cfSdkHandleAuthorizationFailure(error: Error) {
+        //Handle authorization failure
+        print("Error: ", error.localizedDescription)
     }
 }
 ```
