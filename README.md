@@ -122,7 +122,7 @@ class ViewController: UIViewController, CFSDKConfigDelegate {
 # SDK Functions
 
 ## 1. User Profile
-To retrieve user profile details, it is necessary to invoke the `getUserProfile()` function as demonstrated below.
+To retrieve user profile details, it is necessary to invoke the `getUserProfile()` function as demonstrated below, As part of the result (response) you will get `UserProfileData` model.
 
 ```Swift
 let signalProd = CFAPIManager.shared.getUserProfile()
@@ -138,24 +138,19 @@ signalProd.startWithResult { result in
 }
 ```
 
-As part of the result (response) you will get `UserProfileData` model.
+## 2. Get a list of customer cards.
+To retrieve a list of customer cards, it is necessary to invoke the `getCardAccountList()` function as demonstrated below. to invoke this function must pass the customer number as a string, As part of the result (response) you will get `AccountListData` model.
 
-In Swift, the question mark (?) is used in conjunction with data types to denote optional. Options represent the absence of a value in Swift whose default value is null (nil).
-### UserProfileData model.
-| Parameters | datatype |
-| :--- | :---: |
-| applicationID | String? |
-| phoneNumber | String? |
-| emailAddress | String? |
-| firstName | String? |
-| lastName | String? |
-| fullName | FullName? |
-| customerNumber | String? |
-
-#### Submodel of UserProfileData
-#### FullName model.
-
-| Parameters | datatype |
-| :--- | :---: |
-| firstName | String |
-| lastName | String |
+```Swift
+let signalProd = CFAPIManager.shared.getCardAccountList(customerNumber: "Customer Number String")
+signalProd.startWithResult { result in
+  switch result {
+  case .success(let response):
+      // Handle API response
+      print("API response: \(response)")
+  case .failure(let error):
+     // Handle errors
+     print("Error: \(error.localizedDescription)")
+  }
+}
+```
