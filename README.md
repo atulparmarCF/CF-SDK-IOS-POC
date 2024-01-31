@@ -13,6 +13,7 @@ Change Financial SDK POC is a sample SDK in which it has predefined functions th
 
 [SDK Functions](#sdk-functions)
 * [1. User Profile](#1-user-profile)
+* [2. Get a list of customer cards.](#2-get-a-list-of-customer-cards)
 
 - - - -
 # Integration Guides
