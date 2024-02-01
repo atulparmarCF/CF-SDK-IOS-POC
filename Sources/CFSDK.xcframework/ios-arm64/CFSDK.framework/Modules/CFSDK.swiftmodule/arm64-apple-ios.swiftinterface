@@ -1,0 +1,566 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name CFSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import Alamofire
+@_exported import CFSDK
+import Foundation
+import ReactiveSwift
+import Swift
+import SwiftyJSON
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct MoneyAmountFormatter {
+  public static func formatForAPIRequest(_ money: CFSDK.Money) -> Swift.String
+  public static func money(from string: Swift.String?) -> CFSDK.Money?
+  public static func formatCents(_ str: Swift.String?) -> Swift.String
+}
+public struct CFHTTPStatusCode : Swift.CustomDebugStringConvertible {
+  public let value: Swift.Int
+  public init(value: Swift.Int)
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+public struct CFHTTPStatusCodes {
+  public var successCodes: Foundation.IndexSet
+  public var redirectCodes: Foundation.IndexSet
+  public var appStoreRedirectCodes: Foundation.IndexSet
+  public static var `default`: CFSDK.CFHTTPStatusCodes {
+    get
+  }
+  public static let successCodes: Foundation.IndexSet
+  public static let redirectCodes: Foundation.IndexSet
+  public static let appStoreRedirectCodes: Foundation.IndexSet
+  public static let serverErrorCodes: Foundation.IndexSet
+}
+public struct AccountID : CFSDK.ValueType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public typealias Value = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct AccountRefID : CFSDK.ValueType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public typealias Value = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct MemberID : CFSDK.ValueType {
+  public let value: Swift.Int
+  public init(value: Swift.Int)
+  public typealias Value = Swift.Int
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct BankID : CFSDK.ValueType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public typealias Value = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CardID : CFSDK.ValueType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public typealias Value = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CFResponseMessage {
+  public var keys: [Swift.String] {
+    get
+  }
+  public var message: Swift.String {
+    get
+  }
+  public init?(json: CFSDK.CFJSON)
+  public init?(rawData: Foundation.Data?)
+}
+public protocol AnyAccount : Swift.Equatable {
+  var accountID: CFSDK.AccountID { get }
+}
+public struct AccountNumber : CFSDK.ValueType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public typealias Value = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct RoutingNumber : CFSDK.ValueType {
+  public let value: Swift.String
+  public init(value: Swift.String)
+  public typealias Value = Swift.String
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum AccountType : Swift.CustomStringConvertible {
+  case checking
+  case savings
+  public static let allAccountTypes: [CFSDK.AccountType]
+  public var stringKey: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public var achAccountTypeDescription: Swift.String {
+    get
+  }
+  public init?(value: Swift.String)
+  public static func == (a: CFSDK.AccountType, b: CFSDK.AccountType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum CardType : Swift.CustomStringConvertible {
+  case prepaid
+  case postpaid
+  public static let allCardTypes: [CFSDK.CardType]
+  public var stringKey: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public init?(value: Swift.String)
+  public static func == (a: CFSDK.CardType, b: CFSDK.CardType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Swift.String {
+  public var length: Swift.Int {
+    get
+  }
+  public subscript(index: Swift.Int) -> Swift.String {
+    get
+  }
+  public func substring(fromIndex: Swift.Int) -> Swift.String
+  public func substring(toIndex: Swift.Int) -> Swift.String
+  public subscript(uncheckedRange: Swift.Range<Swift.Int>) -> Swift.String {
+    get
+  }
+  public func slice(between left: Swift.String, and right: Swift.String) -> Swift.String?
+}
+extension Swift.String {
+  public var cfDigitsOnly: Swift.String {
+    get
+  }
+}
+public struct Account : CFSDK.AnyAccount {
+  public let accountID: CFSDK.AccountID
+  public let openingDate: Foundation.Date
+  public let status: CFSDK.Account.Status
+  public let cards: [CFSDK.DomesticCard]
+  public let cardType: CFSDK.CardType
+  public let cardNumberMasked: Swift.String
+  public let expiryDate: Foundation.Date?
+  public let validFromDate: Swift.String?
+  public let virtual: Swift.Bool
+  public let subcard: Swift.Bool
+  public let allowTransfer: Swift.Bool
+  public let allowSubcards: Swift.Bool
+  public let programID: Swift.String
+  public let embossName: Swift.String
+  public init(accountID: CFSDK.AccountID, openingDate: Foundation.Date, status: CFSDK.Account.Status, cards: [CFSDK.DomesticCard]? = nil, cardNumberMasked: Swift.String?, cardType: CFSDK.CardType?, expiryDate: Foundation.Date? = nil, validFromDate: Swift.String? = nil, virtual: Swift.Bool, subcard: Swift.Bool, allowTransfer: Swift.Bool, allowSubcards: Swift.Bool, programID: Swift.String, embossName: Swift.String)
+  public init?(json: CFSDK.CFJSON)
+}
+public func == (lhs: CFSDK.Account, rhs: CFSDK.Account) -> Swift.Bool
+extension CFSDK.Account {
+  public enum Status {
+    case active
+    case closed
+    case locked
+    case created
+    case pendingClosure
+    case complianceHold
+    case pendingToActivate
+    case unknown
+    public static let allAccountStatus: [CFSDK.Account.Status]
+    public var stringKey: Swift.String {
+      get
+    }
+    public var userFriendlyDescription: Swift.String {
+      get
+    }
+    public init?(value: Swift.String)
+    public static func == (a: CFSDK.Account.Status, b: CFSDK.Account.Status) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension Swift.Array {
+  public func array<S>(byAdding sequence: S) -> [Element] where Element == S.Element, S : Swift.Sequence
+  public func array(byAdding element: Element) -> [Element]
+  public func mapWithIndex<T>(_ transform: (Swift.Int, Element) throws -> T) rethrows -> [T]
+}
+public struct UserProfileData {
+  public let applicationID: Swift.String?
+  public let phoneNumber: Swift.String?
+  public let emailAddress: Swift.String?
+  public let firstName: Swift.String?
+  public let lastName: Swift.String?
+  public let fullName: CFSDK.FullName?
+  public let customerNumber: Swift.String?
+  public init?(json: CFSDK.CFJSON)
+}
+public struct FullName : Swift.Equatable, Swift.CustomStringConvertible {
+  public let firstName: Swift.String
+  public let lastName: Swift.String
+  public init(firstName: Swift.String, lastName: Swift.String)
+  public var description: Swift.String {
+    get
+  }
+  public var string: Swift.String {
+    get
+  }
+  public static func == (a: CFSDK.FullName, b: CFSDK.FullName) -> Swift.Bool
+}
+public enum CFSpecialError : Foundation.LocalizedError {
+  case cancellation
+  case redirect(reason: CFSDK.CFSpecialError.RedirectReason)
+  case appStoreRedirect(code: CFSDK.CFHTTPStatusCode, errorKeys: [Swift.String], message: Swift.String?)
+  public enum RedirectReason {
+    case httpStatusCode(CFSDK.CFHTTPStatusCode)
+  }
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum CFInternalError : Foundation.LocalizedError {
+  case notConnectedToInternet
+  case unexpectedState(nestedError: (any Swift.Error)?)
+  case jsonValue
+  case responseParse
+  case timeout
+  case unexpectedHttpStatusCode(code: CFSDK.CFHTTPStatusCode, errorKeys: [Swift.String], message: Swift.String?)
+  case systemAPIError(apiName: Swift.String, nestedError: (any Swift.Error)?)
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+extension Swift.Error {
+  public func cfConvertToAFError(failString: Swift.String = NSLocalizedString("Error!!!", comment: "")) -> Alamofire.AFError
+  public func cfUnwrappedError() -> any Swift.Error
+}
+public enum MoneyError : Foundation.LocalizedError {
+  case divideByZero
+  case numberTooLarge
+  case numberTooSmall
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public static func == (a: CFSDK.MoneyError, b: CFSDK.MoneyError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ValueType : Swift.CustomStringConvertible, Swift.Hashable {
+  associatedtype Value : Swift.Hashable
+  var value: Self.Value { get }
+  init(value: Self.Value)
+}
+extension CFSDK.ValueType {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var description: Swift.String {
+    get
+  }
+}
+public func == <T>(lhs: T, rhs: T) -> Swift.Bool where T : CFSDK.ValueType
+extension Foundation.DateFormatter {
+  public enum ServerFormat : Swift.String {
+    case ISOYearMonthDay
+    case ISOYearMonthDayTimeMillSec
+    case monthYear
+    case yearMonth
+    case ISOMonthDayYear
+    case ISOYearMonthDayTime
+    case YearMonthDay
+    case yearMonthDay
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum UserFormat : Swift.String {
+    case cardExpMonthYear
+    case monthDayYear
+    case dayMonthYear
+    case monthDayYearSlashes
+    case day
+    case month
+    case year
+    case weekdayDayMonthYear
+    case weekdayDayMonthTime
+    case weekdayDayMonthTimeYear
+    case weekdayMonthDayYearTime
+    case monthYear
+    case fullMonthYear
+    case abbreviatedDayName
+    case abbreviatedDayNumber
+    case abbreviatedMonthDayYear
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  convenience public init(serverFormat: Foundation.DateFormatter.ServerFormat)
+  convenience public init(userFormat: Foundation.DateFormatter.UserFormat)
+}
+public struct AccountNotFoundAndMessage : Swift.Equatable {
+  public let accountNotFound: Swift.Bool
+  public let message: Swift.String?
+  public init(accountNotFound: Swift.Bool, message: Swift.String? = nil)
+  public static func == (a: CFSDK.AccountNotFoundAndMessage, b: CFSDK.AccountNotFoundAndMessage) -> Swift.Bool
+}
+public struct AccountListData {
+  public let accountNotFoundAndMessage: CFSDK.AccountNotFoundAndMessage
+  public let accounts: [CFSDK.Account]
+  public init(accounts: [CFSDK.Account], accountNotFoundAndMessage: CFSDK.AccountNotFoundAndMessage)
+  public init?(json: CFSDK.CFJSON, statusCode: CFSDK.CFHTTPStatusCode)
+}
+public struct Money : Swift.Comparable {
+  public var amount: Foundation.NSDecimalNumber {
+    get
+  }
+  public init(cents: Swift.Int) throws
+  public static var zero: CFSDK.Money {
+    get
+  }
+  public init(_ decimalNumber: Foundation.NSDecimalNumber) throws
+  public init(doubleValue: Swift.Double) throws
+}
+extension CFSDK.Money : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension CFSDK.Money {
+  public struct Constants {
+    public static let maxValue: Foundation.NSDecimalNumber
+    public static let minValue: Foundation.NSDecimalNumber
+    public static let notAvailableBalance: Swift.String
+  }
+}
+extension Foundation.NSDecimalNumber {
+  public func dollarsToCents() -> Foundation.NSDecimalNumber
+  public func centsToDollars() -> Foundation.NSDecimalNumber
+  public func negate() -> Foundation.NSDecimalNumber
+}
+public func + (lhs: CFSDK.Money, rhs: CFSDK.Money) throws -> CFSDK.Money
+public func - (lhs: CFSDK.Money, rhs: CFSDK.Money) throws -> CFSDK.Money
+public func * (lhs: CFSDK.Money, rhs: CFSDK.Money) throws -> CFSDK.Money
+public func / (lhs: CFSDK.Money, rhs: CFSDK.Money) throws -> CFSDK.Money
+public func == (lhs: CFSDK.Money, rhs: CFSDK.Money) -> Swift.Bool
+public func < (lhs: CFSDK.Money, rhs: CFSDK.Money) -> Swift.Bool
+public func handleMoneyResultValidation(result: CFSDK.Money) throws
+public struct DecimalValue {
+  public let amount: Foundation.NSDecimalNumber
+  public init(amount: Foundation.NSDecimalNumber = .zero)
+  public init(cents: Swift.Int = 0)
+}
+extension Foundation.NSDecimalNumber : Swift.Comparable {
+}
+public func == (lhs: CFSDK.DecimalValue, rhs: CFSDK.DecimalValue) -> Swift.Bool
+public func < (lhs: CFSDK.DecimalValue, rhs: CFSDK.DecimalValue) -> Swift.Bool
+public func == (lhs: Foundation.NSDecimalNumber, rhs: Foundation.NSDecimalNumber) -> Swift.Bool
+public func < (lhs: Foundation.NSDecimalNumber, rhs: Foundation.NSDecimalNumber) -> Swift.Bool
+public protocol CFSDKConfigDelegate : AnyObject {
+  func cfSdkHandleAuthorizationSuccess()
+  func cfSdkHandleAuthorizationFailure(error: any Swift.Error)
+  func cfSdkHandleConfigurationSuccess()
+  func cfSdkHandleConfigurationFailure(error: any Swift.Error)
+}
+public struct CFSDKConfig {
+  weak public var delegate: (any CFSDK.CFSDKConfigDelegate)?
+  public init()
+  public func skdConfiguration(cardholderId: Swift.String, environment: CFSDK.CFEnvironment = .envProd)
+}
+public enum CFEnvironment {
+  case envTest
+  case envQA
+  case envProd
+  public static func == (a: CFSDK.CFEnvironment, b: CFSDK.CFEnvironment) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct CFHelper {
+}
+extension CFSDK.CFHelper {
+  public static func networkErrorMessage(_ responseMessage: CFSDK.CFResponseMessage?, httpCode: CFSDK.CFHTTPStatusCode) -> Swift.String?
+}
+extension CFSDK.CFHelper {
+  public static var isRunningTests: Swift.Bool {
+    get
+  }
+}
+extension CFSDK.CFHelper {
+  public static func prettyPrinted(_ obj: Any?, prefix: Swift.String = "", suffix: Swift.String = "") -> Swift.String
+}
+public func cfMinmax<V>(value: V, min minValue: V, max maxValue: V) -> V where V : Swift.Comparable
+public struct CFJSON {
+  public init(_ json: SwiftyJSON.JSON)
+  public subscript(position: SwiftyJSON.JSON.Index) -> (Swift.String, CFSDK.CFJSON) {
+    get
+  }
+  public subscript(path: [any SwiftyJSON.JSONSubscriptType]) -> CFSDK.CFJSON {
+    get
+  }
+  public subscript(path: any SwiftyJSON.JSONSubscriptType...) -> CFSDK.CFJSON {
+    get
+  }
+  public func double() throws -> Swift.Double
+  public var optionalDouble: Swift.Double? {
+    get
+  }
+  public func int() throws -> Swift.Int
+  public var optionalInt: Swift.Int? {
+    get
+  }
+  public func uInt() throws -> Swift.UInt
+  public var optionalUInt: Swift.UInt? {
+    get
+  }
+  public func string() throws -> Swift.String
+  public var optionalString: Swift.String? {
+    get
+  }
+  public func bool() throws -> Swift.Bool
+  public var optionalBool: Swift.Bool? {
+    get
+  }
+  public func array() throws -> [CFSDK.CFJSON]
+  public var optionalArray: [CFSDK.CFJSON]? {
+    get
+  }
+}
+extension CFSDK.CFJSON {
+  public init?(fileURL: Foundation.URL)
+  public init?(data: Foundation.Data)
+  public init?(string: Swift.String)
+}
+extension CFSDK.CFJSON {
+  public func convertToData() -> Foundation.Data?
+}
+extension Foundation.Data {
+  public func convertToJSON() -> CFSDK.CFJSON?
+  public func convertToJsonDic() -> [Swift.String : Any]
+}
+@_hasMissingDesignatedInitializers public class Currency {
+  @objc deinit
+}
+public struct AccountBalance : Swift.Equatable {
+  public let accountCurrencyCode: Swift.String
+  public let accountCurrentBalance: Swift.String
+  public let accountAvailablePurchase: Swift.String
+  public let accountAvailableWithdrawal: Swift.String
+  public init?(json: CFSDK.CFJSON)
+  public init()
+  public static func == (a: CFSDK.AccountBalance, b: CFSDK.AccountBalance) -> Swift.Bool
+}
+public struct DomesticCard : Swift.Equatable {
+  public let accountNumber: CFSDK.AccountNumber
+  public let currency: Swift.String
+  public let openDay: Foundation.Date
+  public let routing: CFSDK.RoutingNumber
+  public let ddaid: Swift.String
+  public init?(json: CFSDK.CFJSON)
+}
+extension CFSDK.DomesticCard {
+  public enum Status : Swift.String {
+    case active
+    case blocked
+    case cancelled
+    case inactive
+    case lost
+    case pendingActivation
+    case stolen
+    case adminBlocked
+    case pinBlocked
+    case damaged
+    public static let allDomesticCardStatus: [CFSDK.DomesticCard.Status]
+    public init?(value: Swift.String)
+    public static func userFriendlyDescription(for status: CFSDK.DomesticCard.Status) -> Swift.String
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension CFSDK.DomesticCard {
+  public enum Carrier : Swift.String {
+    case masterCard
+    case visa
+    public static let allCarriers: [CFSDK.DomesticCard.Carrier]
+    public init?(value: Swift.String)
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public func == (lhs: CFSDK.DomesticCard, rhs: CFSDK.DomesticCard) -> Swift.Bool
+public struct RegistrationCardType {
+  public enum CardType : Swift.Equatable {
+    case physical
+    case virtual
+    public static let allRegistrationCardType: [CFSDK.RegistrationCardType.CardType]
+    public init?(value: Swift.String)
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: CFSDK.RegistrationCardType.CardType, b: CFSDK.RegistrationCardType.CardType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public struct CFAPIManager {
+  public static var shared: CFSDK.CFAPIManager
+  public init()
+  public func getUserProfile() -> ReactiveSwift.SignalProducer<CFSDK.UserProfileData, any Swift.Error>
+  public func getCardAccountList(customerNumber: Swift.String) -> ReactiveSwift.SignalProducer<CFSDK.AccountListData, any Swift.Error>
+}
+extension CFSDK.AccountType : Swift.Equatable {}
+extension CFSDK.AccountType : Swift.Hashable {}
+extension CFSDK.CardType : Swift.Equatable {}
+extension CFSDK.CardType : Swift.Hashable {}
+extension CFSDK.Account.Status : Swift.Equatable {}
+extension CFSDK.Account.Status : Swift.Hashable {}
+extension CFSDK.MoneyError : Swift.Equatable {}
+extension CFSDK.MoneyError : Swift.Hashable {}
+extension Foundation.DateFormatter.ServerFormat : Swift.Equatable {}
+extension Foundation.DateFormatter.ServerFormat : Swift.Hashable {}
+extension Foundation.DateFormatter.ServerFormat : Swift.RawRepresentable {}
+extension Foundation.DateFormatter.UserFormat : Swift.Equatable {}
+extension Foundation.DateFormatter.UserFormat : Swift.Hashable {}
+extension Foundation.DateFormatter.UserFormat : Swift.RawRepresentable {}
+extension CFSDK.CFEnvironment : Swift.Equatable {}
+extension CFSDK.CFEnvironment : Swift.Hashable {}
+extension CFSDK.DomesticCard.Status : Swift.Equatable {}
+extension CFSDK.DomesticCard.Status : Swift.Hashable {}
+extension CFSDK.DomesticCard.Status : Swift.RawRepresentable {}
+extension CFSDK.DomesticCard.Carrier : Swift.Equatable {}
+extension CFSDK.DomesticCard.Carrier : Swift.Hashable {}
+extension CFSDK.DomesticCard.Carrier : Swift.RawRepresentable {}
+extension CFSDK.RegistrationCardType.CardType : Swift.Hashable {}
