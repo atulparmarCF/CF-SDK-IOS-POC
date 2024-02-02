@@ -143,7 +143,8 @@ signalProd.startWithResult { result in
 Retrieves a list of all cards associated with the specified customer, it is necessary to invoke the `getCardAccountList()` function as demonstrated below. to invoke this function must pass the customer number as a string, As part of the result (response) you will get `AccountListData` model.
 
 ```Swift
-let signalProd = CFAPIManager.shared.getCardAccountList(customerNumber: "Customer Number String")
+let customerNo = "Customer Number String"
+let signalProd = CFAPIManager.shared.getCardAccountList(customerNumber: customerNo)
 signalProd.startWithResult { result in
   switch result {
   case .success(let response):
